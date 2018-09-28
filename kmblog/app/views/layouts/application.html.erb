@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Kmblog</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+ <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+
+  <script   src="https://code.jquery.com/jquery-3.3.1.js"   integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="   crossorigin="anonymous"></script>
+  <%= csrf_meta_tags %>
+
+</head>
+<body>
+
+  <nav class=light-blue darken-4 >
+    <div class="nav-wrapper">
+      <a href="#" class="brand-logo">ミニアプリ作成</a>
+      <% if user_signed_in? %>
+        <ul id="nav-mobile" class="right aline">
+        <a href="/users/<%= current_user.id %>">マイページ</a>
+        </ul>
+        <ul id="nav-mobile" class="right aline">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </ul>
+        </ul>
+        <ul id="nav-mobile" class="right aline">
+          <a class="post" href="/blogs/new">投稿する</a>
+        </ul>
+
+
+
+      <% else %>
+        <ul id="nav-mobile" class="right aline">
+        <%= link_to "ログイン", new_user_session_path, class: 'post' %>
+        </ul>
+        <ul id="nav-mobile" class="right aline">
+        <%= link_to "新規登録", new_user_registration_path, class: 'post' %>
+        </ul>
+      <% end %>
+        <!-- <li><a href="sass.html">ログアウト</a></li>
+        <li><a href="badges.html">Components</a></li>
+        <li><a href="collapsible.html">JavaScript</a></li> -->
+    </div>
+  </nav>
+
+<%= yield %>
+
+</body>
+</html>
