@@ -1,17 +1,5 @@
-<%= form_for @blog  do |f| %>
-
-   <div class = “name”>
-     <%= f.label :タイトル %>
-     <%= f.text_field :name %>
-   </div>
+<div class="contents row" >
+   <%= render :partial => "describe" %>
+</div>
 
 
-   <div class = “text”>
-     <%= f.label :本文 %>
-     <%= f.text_area :text %>
-   </div>
-
-   <%= f.submit "投稿する" do %>
-     <i class=“icon-arrow-right”></i>
-   <% end %>
- <% end %>
